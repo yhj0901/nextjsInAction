@@ -7,7 +7,7 @@ interface UserPageProps {
   };
 }
 
-const getPost = async (username: string) => {
+const getUser = async (username: string) => {
   console.log('#############', username);
   try {
     const userReq = await axios.get(
@@ -27,7 +27,7 @@ const getPost = async (username: string) => {
 };
 
 const UserPage = async ({ params }: UserPageProps) => {
-  const { user, error } = await getPost(params.username);
+  const { user, error } = await getUser(params.username);
 
   if (error || !user) {
     return <div>{error || 'User not found'}</div>;
